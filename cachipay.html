@@ -30,7 +30,7 @@
             url: "https://www.datos.gov.co/resource/f789-7hwg.json",
             type: "GET",
             data: {
-                "$limit": 4000,
+                "$limit": 5000,
                 "$$app_token": "qrWbZ9mhsAXj6S0L2U3LMV2YF", //Token Creado en Socrata
                 "$where": "fecha_de_firma_del_contrato BETWEEN '2019-01-01' AND '" + getCurrentDate() + "'", // Parametro de Busqueda
                 "municipio_entidad": "Cachipay" // Filtro por Municipio
@@ -78,3 +78,4 @@
     </script>    
 </body>
 </html>
+
