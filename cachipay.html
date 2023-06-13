@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contratacion Cachipay - API con AJAX</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="data-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+
+    </script>
+    <script>
+        $.ajax({
+            url: "https://www.datos.gov.co/resource/f789-7hwg.json",
+            type: "GET",
+            data: {
+                "$limit": 4000,
+                "$$app_token": "qrWbZ9mhsAXj6S0L2U3LMV2YF", //Token Creado en Socrata
+                "$where": "fecha_de_firma_del_contrato BETWEEN '2019-01-01' AND '" + getCurrentDate() + "'", // Parametro de Busqueda
+                "municipio_entidad": "Cachipay" // Filtro por Municipio
+            }
+        }).done(function(data) {
+            renderTable(data);
+        });
+
+        function renderTable(data) {
+            var table = $('<table></table>');
+            var headerRow = $('<tr></tr>');
+
+            // encabezados de columna
+            Object.keys(data[0]).forEach(function(key) {
+                var headerCell = $('<th></th>');
+                headerCell.text(key);
+                headerRow.append(headerCell);
+            });
+
+            table.append(headerRow);
+
+            // filas de datos
+            data.forEach(function(item) {
+                var row = $('<tr></tr>');
+
+                Object.values(item).forEach(function(value) {
+                    var cell = $('<td></td>');
+                    cell.text(value);
+                    row.append(cell);
+                });
+
+                table.append(row);
+            });
+
+            $('#data-container').append(table);
+        }
+
+        function getCurrentDate() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1).toString().padStart(2, '0');
+            var day = date.getDate().toString().padStart(2, '0');
+            return year + "-" + month + "-" + day;
+        }
+    </script>    
+</body>
+</html>
