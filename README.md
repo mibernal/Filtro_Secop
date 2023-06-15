@@ -1,9 +1,9 @@
 # Filtro_Secop
 
-python -m venv venv
-venv\Scripts\activate
-pip install sodapy
-pip install xlsxwriter
-pip install openpyxl
+<p> python -m venv venv </p>
+<p>venv\Scripts\activate</p>
+<p>pip install sodapy</p>
+<p>pip install xlsxwriter</p>
+<p>pip install openpyxl</p>
 
 Al ejecutar el programa, se debe generar un archivo output.xlsx, en donde se encuentra la informacion ordenada en tablas.
