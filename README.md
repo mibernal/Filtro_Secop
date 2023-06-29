@@ -1,4 +1,5 @@
 # Filtro_Secop
+<p> Programa para Extraer informacion especifica de la API Socrata de Colombia Compra. </p>
 
 <p> python -m venv venv </p>
 <p>venv\Scripts\activate</p>
